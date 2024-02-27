@@ -102,9 +102,11 @@ grm.__namecall = newcclosure(function(self, ...)
         return
     elseif tostring(args[1]) == "game.Players.Localplayer.UserId" then
         return
-    elseif tostring(args[1]) == "math.random()" then
+    elseif tostring(args[1]) == "math.random" then
         return
     elseif tostring(args[1]) == "Exploit" then
+        return
+    elseif tostring(args[1]) == "RunService" then
         return
     end
     return old(self, ...)
