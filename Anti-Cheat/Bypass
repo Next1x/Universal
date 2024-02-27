@@ -301,17 +301,17 @@ grm.__namecall = newcclosure(function(self, ...)
         return
     elseif tostring(args[1]) == "Jumppower" then
         return
-    elseif tostring(args[1]) == "Speed" then
+    elseif tostring(args[1]) == "RobloxReplicatedStorage" then
         return
     elseif tostring(args[1]) == "Kick" then
         return
     elseif tostring(args[1]) == "Velocity" then
         return
-    elseif tostring(args[1]) == "game.Players.Localplayer.Name" then
+    elseif tostring(args[1]) == "game.Players.Localplayer" then
         return
-    elseif tostring(args[1]) == "game.Players.Localplayer.UserId" then
+    elseif tostring(args[1]) == "GetService" then
         return
-    elseif tostring(args[1]) == "game.Players.LocalPlayer.Backpack" then
+    elseif tostring(args[1]) == "Handle" then
         return
     elseif tostring(args[1]) == "Exploit" then
         return
