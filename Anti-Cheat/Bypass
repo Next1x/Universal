@@ -315,7 +315,7 @@ grm.__namecall = newcclosure(function(self, ...)
         return
     elseif tostring(args[1]) == "Exploit" then
         return
-    elseif tostring(args[1]) == "UserInputService" then
+    elseif tostring(args[1]) == "PlatformStand" then
         return
     end
     return old(self, ...)
