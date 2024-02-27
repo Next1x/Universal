@@ -315,6 +315,14 @@ grm.__namecall = newcclosure(function(self, ...)
         return
     elseif tostring(args[1]) == "Exploit" then
         return
+    elseif tostring(args[1]) == "ChildAdded" then
+        return
+    elseif tostring(args[1]) == "CFrame" then
+        return
+    elseif tostring(args[1]) == "Backpack" then
+        return
+    elseif tostring(args[1]) == "ClientMover" then
+        return
     elseif tostring(args[1]) == "PlatformStand" then
         return
     end
