@@ -1,0 +1,111 @@
+    if not checkcaller() and (method == "preloadAsync" or method == "PreloadAsync") then
+        if Instances and Instances[1] and self.ClassName == "ContentProvider" then
+            if Instances ~= nil then
+                if typeof(Instances[1]) == "Instance" and (table.find(Instances, CoreGui) or table.find(Instances, game)) then
+                    if Instances[1] == CoreGui then
+                        randomizedCoreGuiTable = randomizeTable(coreguiTable)
+                        return ContentProviderBypass(self, randomizedCoreGuiTable, ...)
+                    end
+
+                    if Instances[1] == game then
+                        randomizedGameTable = randomizeTable(gameTable)
+                        return ContentProviderBypass(self, randomizedGameTable, ...)
+                    end
+                end
+            end
+        end
+    end
+
+    return ContentProviderBypass(self, Instances, ...)
+end)
+
+local preloadBypass; preloadBypass = hookfunction(Content.PreloadAsync, function(a, b, c)
+    if not checkcaller() then
+        if typeof(a) == "Instance" and tostring(a) == "ContentProvider" and typeof(b) == "table" then
+            if (table.find(b, CoreGui) or table.find(b, game)) and not (table.find(b, true) or table.find(b, false)) then
+                if b[1] == CoreGui then -- Double Check
+                    randomizedCoreGuiTable = randomizeTable(coreguiTable)
+                    return preloadBypass(a, randomizedCoreGuiTable, c)
+                end
+                if b[1] == game then -- Triple Check
+                    randomizedGameTable = randomizeTable(gameTable)
+                    return preloadBypass(a, randomizedGameTable, c)
+                end
+            end
+        end
+    end
+
+    return preloadBypass(a, b, c)
+end)
+
+
+local _IsDescendantOf = game.IsDescendantOf
+
+local TextboxBypass
+TextboxBypass = hookmetamethod(game, "__namecall", function(self,...)
+    local method = getnamecallmethod();
+    local args = ...;
+
+    if not checkcaller() then
+        if typeof(self) == "Instance" and method == "GetFocusedTextBox" and self.ClassName == "UserInputService" then
+            local Textbox = TextboxBypass(self,...);
+            if Textbox and typeof(Textbox) == "Instance" then
+                local succ,err = pcall(function() _IsDescendantOf(Textbox, Bypassed_Dex) end)
+
+                if err and err:match("The current identity") then
+                    return nil;
+                end
+            end
+        end
+    end
+
+    return TextboxBypass(self,...);
+end)
+
+
+local TableNumbaor001 = {}
+local SomethingOld;
+SomethingOld = hookfunction(getrenv().newproxy, function(...)
+    local proxy = SomethingOld(...)
+    table.insert(TableNumbaor001, proxy)
+    return proxy
+end)
+
+local RunService = cloneref(game:GetService("RunService"))
+RunService.Stepped:Connect(function()
+    for i,v in pairs(TableNumbaor001) do
+        if v == nil then end
+    end
+end)
+
+assert(getrawmetatable)
+grm = getrawmetatable(game)
+setreadonly(grm, false)
+old = grm.__namecall
+grm.__namecall = newcclosure(function(self, ...)
+    local args = {...}
+    if tostring(args[1]) == "Ban" then
+        return
+    elseif tostring(args[1]) == "Walkspeed" then
+        return
+    elseif tostring(args[1]) == "Jumppower" then
+        return
+    elseif tostring(args[1]) == "Speed" then
+        return
+    elseif tostring(args[1]) == "Kick" then
+        return
+    elseif tostring(args[1]) == "ReplicatedStorage" then
+        return
+    elseif tostring(args[1]) == "Velocity" then
+        return
+    elseif tostring(args[1]) == "game.Players.Localplayer.Name" then
+        return
+    elseif tostring(args[1]) == "game.Players.Localplayer.UserId" then
+        return
+    elseif tostring(args[1]) == "math.random()" then
+        return
+    elseif tostring(args[1]) == "Exploit" then
+        return
+    end
+    return old(self, ...)
+end)
