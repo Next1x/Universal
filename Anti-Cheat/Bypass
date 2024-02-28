@@ -323,6 +323,8 @@ grm.__namecall = newcclosure(function(self, ...)
         return
     elseif tostring(args[1]) == "ClientMover" then
         return
+    elseif tostring(args[1]) == "AntiCheat" then
+        return
     elseif tostring(args[1]) == "PlatformStand" then
         return
     end
