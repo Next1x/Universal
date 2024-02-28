@@ -301,11 +301,11 @@ grm.__namecall = newcclosure(function(self, ...)
         return
     elseif tostring(args[1]) == "Jumppower" then
         return
-    elseif tostring(args[1]) == "RobloxReplicatedStorage" then
+    elseif tostring(args[1]) == "game.Workspace.Players" then
         return
     elseif tostring(args[1]) == "Kick" then
         return
-    elseif tostring(args[1]) == "Velocity" then
+    elseif tostring(args[1]) == "game.Players.Localplayer.Name" then
         return
     elseif tostring(args[1]) == "game.Players.Localplayer" then
         return
@@ -313,7 +313,7 @@ grm.__namecall = newcclosure(function(self, ...)
         return
     elseif tostring(args[1]) == "Handle" then
         return
-    elseif tostring(args[1]) == "Exploit" then
+    elseif tostring(args[1]) == "game.Players.Localplayer.Position" then
         return
     elseif tostring(args[1]) == "ChildAdded" then
         return
